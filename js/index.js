@@ -27,10 +27,10 @@ var attention_module = (function () {
 	var login = document.querySelector('.m-login');//登录框
 	var close = document.querySelector('.login .close');//关闭登录框
 	var btn = document.querySelector('#login-form .login-btn');//提交按钮
-	var login_url = "https://study.163.com/webDev/login.htm";//请求登录的url
+	var login_url = "//study.163.com/webDev/login.htm";//请求登录的url
 	
 	var error = document.querySelector('.login-error');//错误信息
-	var  fol_url = "https://study.163.com/webDev/attention.htm";
+	var  fol_url = "//study.163.com/webDev/attention.htm";
 	var cancel = document.querySelector('.followed .cac');
 	//关注过的cookie
 	var follow_name = "followSuc";
@@ -215,7 +215,7 @@ var pictures = (function () {
  	// var g_flow = document.querySelector('.g-flow');
  	// var g_width = parseInt(getStyle(g_flow,"width"));
  	// console.log(g_width);
- 	var url = "https://study.163.com/webDev/couresByCategory.htm";
+ 	var url = "//study.163.com/webDev/couresByCategory.htm";
  	var initNum = 1;   // 当前页码 随点击的页码数变化 初始为1
  	var ty = 10; //种类 10代表产品设计 20代表编程语言，随tab标签的点击变化
  	var pz =  20;//请求每页返回数据20个 不变 宽屏为20 窄屏为15
@@ -449,7 +449,7 @@ var pictures = (function () {
 var topHot_moudel = function () {
 	var ulNode = document.querySelector('.m-toplit');
 	var liNode = ulNode.getElementsByTagName("li");
-	var url = 'https://study.163.com/webDev/hotcouresByCategory.htm';
+	var url = '//study.163.com/webDev/hotcouresByCategory.htm';
 	var li_templete = document.querySelector('.item');
 	ajax_get(url,null,drawHot);
 	function drawHot(response) {
