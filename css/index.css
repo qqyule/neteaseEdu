@@ -267,13 +267,13 @@ span.on{
 /* 图片展示区 */
 .g-pictures{
   position: relative;
-/*   width:1615px ;
-  margin: 0 auto; */
   overflow: hidden;
   height: 300px;
+  
 }
 .g-pictures .m-pictures{
   position: absolute;
+  width: 3230px;
 }
 .m-pictures .pic_list{
   float: left;

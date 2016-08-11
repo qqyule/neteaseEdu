@@ -26,11 +26,13 @@ var attention_module = (function () {
 	var fold = document.querySelector('.followed');//已关注
 	var login = document.querySelector('.m-login');//登录框
 	var close = document.querySelector('.login .close');//关闭登录框
+	var form = document.querySelector('#login-form');
 	var btn = document.querySelector('#login-form .login-btn');//提交按钮
-	var login_url = "//study.163.com/webDev/login.htm";//请求登录的url
-	
+	var login_url = "http://study.163.com/webDev/login.htm";//请求登录的url
+	var userinput = document.querySelector('#login-form .user');
+	var passinput = document.querySelector('#login-form .pass');
 	var error = document.querySelector('.login-error');//错误信息
-	var  fol_url = "//study.163.com/webDev/attention.htm";
+	var  fol_url = "http://study.163.com/webDev/attention.htm";
 	var cancel = document.querySelector('.followed .cac');
 	//关注过的cookie
 	var follow_name = "followSuc";
@@ -52,6 +54,8 @@ var attention_module = (function () {
 		else{
 			//弹出登录框
 			login.style.display = "block";
+			form.reset();
+			error.style.display = "none" ;
 		}
 	});
 	//3.为登录框提交添加事件
@@ -89,8 +93,14 @@ var attention_module = (function () {
 		}
 		else{
 			error.style.display = "block" ;
-			alert('账号或密码错误');
 		}
+	}
+	//输入时取消显示错误信息
+	userinput.oninput = function () {
+		error.style.display = "none";
+	}
+	passinput.oninput = function () {
+		error.style.display = "none";
 	}
 	// 获取关注信息
 	function getFollow() {
@@ -177,12 +187,8 @@ var pictures = (function () {
 	var m_pictures = document.getElementsByClassName('m-pictures')[0];//ul区域
 	//为ul复制li以形成无缝无限滚动
 	m_pictures.innerHTML+=m_pictures.innerHTML;
-	var list = m_pictures.getElementsByClassName('pic_list');//li区域
-	//ul的宽度为li的个数*li的宽度
-	m_pictures.style.width=list.length*(list[0].offsetWidth)+"px";
-	//让ul区域一直向左运动，运动到ul的宽度一半时重新定位为0
-	var object_value = -m_pictures.offsetWidth/2;
-	var pic_timer = null;
+	var object_value = -m_pictures.offsetWidth/2,
+		pic_timer ;
 	pic_timer=setInterval(startMove,10);
 	function startMove() {
 		var now_left = m_pictures.offsetLeft;
@@ -211,11 +217,7 @@ var pictures = (function () {
  	var mnavTag = mnav.getElementsByTagName('a');//Tab下的标签区域
  	var mpager = document.querySelector('.m-pager');// 分页器区域
  	var templete = document.querySelector('.f-templete');//内容模板
- 	//请求地址为
- 	// var g_flow = document.querySelector('.g-flow');
- 	// var g_width = parseInt(getStyle(g_flow,"width"));
- 	// console.log(g_width);
- 	var url = "//study.163.com/webDev/couresByCategory.htm";
+ 	var url = "http://study.163.com/webDev/couresByCategory.htm";
  	var initNum = 1;   // 当前页码 随点击的页码数变化 初始为1
  	var ty = 10; //种类 10代表产品设计 20代表编程语言，随tab标签的点击变化
  	var pz =  20;//请求每页返回数据20个 不变 宽屏为20 窄屏为15
@@ -224,40 +226,17 @@ var pictures = (function () {
  	var lightNum = Math.floor(pageNum/2)+1;//保证第几个位置亮
  	//初始化调用ajax获取数据
  	ajax_get(url,option,drawCourse);
- 	/**
- 	 * 根据ajax返回的数据来进行DOM操作
- 	 * @param  {[type]} response ajax返回的JSON对象
- 	 * 
- 	 */
  	function drawCourse(response) {
- 		//将返回的JSON对象进行解析
  		var obj = JSON.parse(response);
- 		// var totalCount = obj.totalCount;//返回的数据总数601 没有意义
- 		// console.log("返回的数据总数"+totalCount);
  		var totalPage = obj.totalPage;//返回的数据总页数 宽屏31 窄屏41
- 		// console.log("返回的数据总页数"+totalPage);
- 		//var pageIndex = obj.pagination.pageIndex;//当前页数 当传入的页数大于
- 		//10. 则一直为4  所以不再以此为数据
- 		// console.log("返回的当前页数"+pageIndex);
- 		// var totalPageCount = obj.pagination.totalPageCount;//总页数
- 		// console.log("返回的总页数"+totalPageCount); 文档给的无效
  		var list = obj.list;
- 		// console.log("内容个数："+ list.length);//由请求的pz决定 宽屏20 窄屏15
- 		// 每次循环添加节点前首先删除templete所有兄弟节点
  		var coverNodes = document.getElementsByClassName('u-cover');
- 		// console.log("删除前个数："+coverNodes.length);
  		for(var i =coverNodes.length-1;i>0;i--){//从最后一个开始删除,保留第一个
  			templete.parentNode.removeChild(coverNodes[i]);
  		}
- 		// console.log("删除后个数："+coverNodes.length);
  		for(var i = 0;i<list.length;i++){
- 			//对每一个list内容进行遍历然后添加到数据模板父节点下
  			var content = templete.cloneNode(true);
  			removeClass(content,"f-templete");
- 			// var couresName = list[i].name;//课程名称
- 			// var middlePhotoUrl = list[i].middlePhotoUrl;//课程图片url地址
- 			// var provider = list[i].provider;//机构发布者
- 			// var learnerCount = list[i].learnerCount;//在学人数
  			var price = list[i].price;//课程价格，0为免费
  			if(price==0){
  				price="免费"
@@ -271,7 +250,7 @@ var pictures = (function () {
  			}
  			var description = list[i].description;//课程描述
  			var img = content.getElementsByTagName('img')[0];
- 			img.src = list[i].middlePhotoUrl;
+ 			img.src = list[i].middlePhotoUrl.replace(/https?:/,"");
  			img.alt = list[i].name;
  			var h3 = content.getElementsByTagName('h3')[0];
  			h3.innerText = list[i].name;
@@ -291,46 +270,7 @@ var pictures = (function () {
  		page(totalPage,option.pageNo); //根据当前页码和总页数来绘制翻页器。
  	}
  	function page(tl,pi) {
- 			//首先初始化
- 			mpager.innerHTML = "";
-			//如果总页数小于分页器的个数
-			// if(tl<pageNum){
-			// 	var prev = document.createElement("a");
-			// 	prev.setAttribute("index",pi-1);
-			// 	if(pi==1){
-			// 		prev.className="prv f-dis";
-			// 	}
-			// 	else{
-			// 		prev.className = "prv"; 
-			// 	}
-			// 	mpager.appendChild(prev);
-			
-			// 	for(var i = 1;i<=tl;i++){
-			// 		var aNOde = document.createElement("a");
-			// 		if(i==pi){
-			// 			aNode.className=="pg selected"
-			// 		}
-			// 		else{
-			// 			aNode.className = "pg" ;
-			// 		}
-			// 		aNode.setAttribute("index",i);
-			// 		mpager.appendChild(aNode);
-			// 	}
-			// 	//在创建上下箭头节点
-			
-			// 	var next = document.createElement("a");
-			// 	next.setAttribute("index",pi+1);
-			// 	if(pi==tl){
-			// 		next.className="prv f-dis";
-			// 	}
-			// 	else{
-			// 		next.className="prv f-dis";
-			// 	}
-			// 	mpager.appendChild(next);
-			// }
-			//如果总页数大于分页器数目时
-			//else{
-				//先创建向上节点
+ 				mpager.innerHTML = "";
 				var prev = document.createElement("a");
 				prev.innerText = "上一页";
 				if(pi==1){
@@ -341,14 +281,6 @@ var pictures = (function () {
 				}
 				prev.setAttribute("index",pi-1);
 				mpager.appendChild(prev);
-				//console.log("分页器个数："+pageNum);
-				//console.log("分页器亮的位置"+lightNum);
-				//始终让分页器的第五个为选中状态
-				//因为分页器个数为pageNum 8个 如果要保证pi是第五个位置
-				//则必须满足当前页大于等于5否则第几页就是第几个选中位置
-				//pi>=5 则第i个数为pi-5+i
-				//同时要(总页数-当前页数)>=(分页器个数-保证第几个位置)
-				//否则就让最后一页在最后一个位置，这一页在(分页器个数-(总页数-当前页))位置
 				for(var i =1;i<=pageNum;i++){
 					//①当前页小于=5 
 					if(pi<=lightNum){
@@ -449,8 +381,9 @@ var pictures = (function () {
 var topHot_moudel = function () {
 	var ulNode = document.querySelector('.m-toplit');
 	var liNode = ulNode.getElementsByTagName("li");
-	var url = '//study.163.com/webDev/hotcouresByCategory.htm';
+	var url = 'http://study.163.com/webDev/hotcouresByCategory.htm';
 	var li_templete = document.querySelector('.item');
+	var scollTimer;
 	ajax_get(url,null,drawHot);
 	function drawHot(response) {
 		var data = JSON.parse(response);
@@ -458,7 +391,7 @@ var topHot_moudel = function () {
 			var liClone = li_templete.cloneNode(true);
 			removeClass(liClone,"f-templete");
 			var img = liClone.querySelector('.imgpic');
-			img.src = data[i].smallPhotoUrl;
+			img.src = data[i].smallPhotoUrl.replace(/https?:/,"");
 			img.alt = data[i].name;
 			var h3 = liClone.querySelector('.tt');
 			h3.innerText = data[i].name;
@@ -466,21 +399,27 @@ var topHot_moudel = function () {
 			count.innerText = data[i].learnerCount;
 			li_templete.parentNode.appendChild(liClone);
 		}
+		li_templete.parentNode.innerHTML+=li_templete.parentNode.innerHTML;
 	}
-	//热门推荐 每隔5秒更新一门课程
-	//整体思路：每次克隆最后一个节点然后加到第一个非模板的节点前面，
-	//然后向下运动一个标签距离后，再删除最后一个节点，同时
-	//定位恢复到之前
-			function startMove() {
-				var cloneLi = liNode[20].cloneNode(true);//因为模板也算一个节点
-				ulNode.insertBefore(cloneLi,liNode[1]);
-				move(ulNode,{bottom:-990},function () {
-					ulNode.removeChild(liNode[21]);
-					ulNode.style.bottom="-900px";
-				});
+	// 无限滚动	
+	function startScoll() {
+		scollTimer = setInterval(scollDown,30);
+		ulNode.style.top = parseInt(getStyle(ulNode,"top"))+5+"px";
+	}
+	function scollDown() {
+		var now_top = parseInt(getStyle(ulNode,"top"));
+		if(now_top%90==0){
+			clearInterval(scollTimer);
+			setTimeout(startScoll,5000);
+		}
+		else{
+			if(now_top>=0){
+				ulNode.style.top = "-1800px";
 			}
-			setInterval(startMove,5000);
-
+			ulNode.style.top = parseInt(getStyle(ulNode,"top"))+5+"px";
+		}
+	}
+	setTimeout(startScoll,5000);
 }();
 
 /**
