@@ -250,7 +250,7 @@ var pictures = (function () {
  			}
  			var description = list[i].description;//课程描述
  			var img = content.getElementsByTagName('img')[0];
- 			img.src = list[i].middlePhotoUrl.replace(/https?:/,"");
+ 			img.src = list[i].middlePhotoUrl;
  			img.alt = list[i].name;
  			var h3 = content.getElementsByTagName('h3')[0];
  			h3.innerText = list[i].name;
@@ -391,7 +391,7 @@ var topHot_moudel = function () {
 			var liClone = li_templete.cloneNode(true);
 			removeClass(liClone,"f-templete");
 			var img = liClone.querySelector('.imgpic');
-			img.src = data[i].smallPhotoUrl.replace(/https?:/,"");
+			img.src = data[i].smallPhotoUrl;
 			img.alt = data[i].name;
 			var h3 = liClone.querySelector('.tt');
 			h3.innerText = data[i].name;
