@@ -270,6 +270,7 @@ span.on{
 }
 .g-pictures .m-pictures{
   position: absolute;
+  width: 3230px;
 }
 .m-pictures .pic_list{
   float: left;
