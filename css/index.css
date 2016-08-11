@@ -10,7 +10,7 @@ li{list-style:none;}
 h1,h2,h3,h4,h5,h6,small{font-size:100%;}
 sup,sub{font-size:83%;}
 pre,code,kbd,samp{font-family:inherit;}
-q:before,q:after{content:none;}
+q::before,q::after{content:none;}
 textarea{overflow:auto;resize:none;}
 label,summary{cursor:default;}
 a,button{cursor:pointer;}
@@ -22,13 +22,8 @@ body{background:#F6F6F6;}
 a{color:#333;/* 黑色 */}
 a:hover{color:#39a030;/* 绿色 */}
 /* 清楚浮动 */
-.clearfix:after{content:'.';display: block;clear: both;height: 0;overflow: hidden;visibility: hidden;width: 0;}
+.clearfix::after{content:'.';display: block;clear: both;height: 0;overflow: hidden;visibility: hidden;}
 .clearfix{zoom:1;}/* ie */
-
-/* html{
-    cursor: default;
-} */
-/* body相对定位 使底部和头部在中间 */
 
 body{
     padding-bottom: 382px;
@@ -66,7 +61,7 @@ body{
 }
 /* 头部区域  头部logoheader+banner+canping */
 .g-header{
-    height: 850px;
+    /* height: 850px; */
     background: #fff;
 }
 .g-header .m-header{
@@ -231,12 +226,13 @@ span.on{
 .g-header .m-products{
   width: 1187px;
   margin: 0 auto;
-  padding-top: 61px;
+  padding: 61px 0 30px;
+  background: #fff;
 }
 .m-products .u-product{
-  background: #fff;
+  
   float: left;
-  width: 239px;
+  width: 243px;
   padding-left: 100px;
 }
 .m-products .product1{
@@ -249,7 +245,7 @@ span.on{
   background: #fff url('../images/product3.png') no-repeat 0 7px;
 }
 .product1,.product2{
-  margin-right: 84px;
+  margin-right: 79px;
 }
 .u-product .tt{
   font-size: 22px;
@@ -267,13 +263,13 @@ span.on{
 /* 图片展示区 */
 .g-pictures{
   position: relative;
+/*   width:1615px ;
+  margin: 0 auto; */
   overflow: hidden;
   height: 300px;
-  
 }
 .g-pictures .m-pictures{
   position: absolute;
-  width: 3230px;
 }
 .m-pictures .pic_list{
   float: left;
@@ -548,8 +544,8 @@ span.on{
 .g-toptit .m-toplit{
   position: absolute;
   width: 223px;
-  /* top: -1800px; */
-  bottom: -900px;
+  top: -1800px;
+  /* bottom: -900px; */
 }
 .m-toplit .item{
   padding: 20px;
@@ -753,10 +749,10 @@ span.on{
         width: 960px;
     }
     .g-header .u-product{
-        width: 171px;
+        width: 214px;
     }
     .g-header .product1,.g-header .product2{
-        margin-right: 73px;
+        margin-right: 9px;
     }
     .g-footer .m-foot .u-into{
         padding-left: 0;
