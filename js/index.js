@@ -28,11 +28,11 @@ var attention_module = (function () {
 	var close = document.querySelector('.login .close');//关闭登录框
 	var form = document.querySelector('#login-form');
 	var btn = document.querySelector('#login-form .login-btn');//提交按钮
-	var login_url = "http://study.163.com/webDev/login.htm";//请求登录的url
+	var login_url = "https://study.163.com/webDev/login.htm";//请求登录的url
 	var userinput = document.querySelector('#login-form .user');
 	var passinput = document.querySelector('#login-form .pass');
 	var error = document.querySelector('.login-error');//错误信息
-	var  fol_url = "http://study.163.com/webDev/attention.htm";
+	var  fol_url = "https://study.163.com/webDev/attention.htm";
 	var cancel = document.querySelector('.followed .cac');
 	//关注过的cookie
 	var follow_name = "followSuc";
@@ -217,7 +217,7 @@ var pictures = (function () {
  	var mnavTag = mnav.getElementsByTagName('a');//Tab下的标签区域
  	var mpager = document.querySelector('.m-pager');// 分页器区域
  	var templete = document.querySelector('.f-templete');//内容模板
- 	var url = "http://study.163.com/webDev/couresByCategory.htm";
+ 	var url = "https://study.163.com/webDev/couresByCategory.htm";
  	var initNum = 1;   // 当前页码 随点击的页码数变化 初始为1
  	var ty = 10; //种类 10代表产品设计 20代表编程语言，随tab标签的点击变化
  	var pz =  20;//请求每页返回数据20个 不变 宽屏为20 窄屏为15
@@ -381,7 +381,7 @@ var pictures = (function () {
 var topHot_moudel = function () {
 	var ulNode = document.querySelector('.m-toplit');
 	var liNode = ulNode.getElementsByTagName("li");
-	var url = 'http://study.163.com/webDev/hotcouresByCategory.htm';
+	var url = 'https://study.163.com/webDev/hotcouresByCategory.htm';
 	var li_templete = document.querySelector('.item');
 	var scollTimer;
 	ajax_get(url,null,drawHot);
