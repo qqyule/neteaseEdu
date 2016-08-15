@@ -248,9 +248,11 @@ span.on{
   margin-right: 79px;
 }
 .u-product .tt{
+  width: 243px;
   font-size: 22px;
 }
 .u-product .pra{
+  width: 243px;
   padding: 20px 0 33px;
   line-height: 24px;
   color: #666;
@@ -742,14 +744,14 @@ span.on{
     display: none;
 }
 /* 自适应 */
-.g-header,.g-pactures,.g-footer{
+.g-header,.g-pictures,.g-footer{
     min-width: 1205px;
 }
 @media screen and (max-width: 1205px){
    .m-notice .notice_content,.g-header .m-header,.g-header .m-products,.g-flow{
         width: 960px;
     }
-    .g-header .u-product{
+    .g-header .u-product,.u-product .tt,.u-product .pra{
         width: 214px;
     }
     .g-header .product1,.g-header .product2{
