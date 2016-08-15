@@ -55,45 +55,6 @@ function setCookie(name, value, expires, path, domain, secure) {
     document.cookie = cookie;
 }
 /**
- * [removeCookie 删除cookie]
- * @param  {[type]} name
- * @param  {[type]} path
- * @param  {[type]} domain
- */
-// function removeCookie(name, path, domain) {
-//     console.log('name=' + name + '; path=' + path + '; domain=' + domain + '; max-age=0');
-//     document.cookie = 'name=' + name + '; path=' + path + '; domain=' + domain ;
-// }
-/**
- * 给一个element绑定一个针对event事件的响应，响应函数为listener，兼容IE
- * 
- * @param {HTMLELement} 
- * @param {event}
- * @param {Function}
- */
-function addEvent(element, event, listener) {//event的名字不含on
-    if (!!element.addEventListener){
-        element.addEventListener(event,listener,false);
-    }else{
-        element.attachEvent('on'+event,listener);
-    }
-}
-
-/**
- * 移除element对象对于event事件发生时执行listener的响应
- * 
- * @param  {HTMLElement}
- * @param  {event}
- * @param  {Function}
- */
-function removeEvent(element, event, listener) {
-    if (!!element.removeEventListener){
-        element.removeEventListener(event,listener,!1);
-    }else{
-        element.detachEvent('on'+event,listener);
-    }
-}
-/**
  * [preventDefault 对IE的兼容]
  * 阻止默认行为
  */
@@ -103,28 +64,6 @@ function preventDefault(event){
     }else{    
         event.returnValue = false;
     }
-}
-/**
- * 实现对click事件的绑定
- * 
- * @param {HTMLElement}
- * @param {Function}
- */
-function addClickEvent(element, listener) {
-    addEvent(element,"click",listener);
-}
-/**
- * 实现对于按Enter键时的事件绑定？？有待考证
- * 
- * @param {HTMLElement}
- * @param {Function}
- */
-function addEnterEvent(element, listener) {
-    addEvent(element,"keyup",function(event){
-    	if (event.ctrlKey) {
-    		listener();
-    	};
-    });
 }
 /**
  * [Ajax get请求函数封装]

@@ -17,24 +17,20 @@ a,button{cursor:pointer;}
 h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:400;}
 del,ins,u,s,a,a:hover{text-decoration:none;}
 body,textarea,input,button,select,keygen,legend{font:12px/1.14 'Microsoft YaHei';color:#333;outline:0;}
-/* 全局背景颜色浅白色，字体大小12px 微软雅黑 */
 body{background:#F6F6F6;}
-a{color:#333;/* 黑色 */}
-a:hover{color:#39a030;/* 绿色 */}
-/* 清楚浮动 */
+a{color:#333;}
+a:hover{color:#39a030;}
 .clearfix::after{content:'.';display: block;clear: both;height: 0;overflow: hidden;visibility: hidden;}
-.clearfix{zoom:1;}/* ie */
+.clearfix{zoom:1;}
 
 body{
     padding-bottom: 382px;
     position: relative;
 }
-/* 通知栏区域 */
 .m-notice{
     display: none;
     height: 36px;
     background: #f3f3f3;
-    /* 点击消失时向上运动 */
     transition: margin-top 0.3s;
 }
 .m-notice .notice_content{
@@ -59,9 +55,7 @@ body{
     background: url(../images/close.png) no-repeat 0 center;
     cursor: pointer;
 }
-/* 头部区域  头部logoheader+banner+canping */
 .g-header{
-    /* height: 850px; */
     background: #fff;
 }
 .g-header .m-header{
@@ -248,11 +242,9 @@ span.on{
   margin-right: 79px;
 }
 .u-product .tt{
-  width: 243px;
   font-size: 22px;
 }
 .u-product .pra{
-  width: 243px;
   padding: 20px 0 33px;
   line-height: 24px;
   color: #666;
@@ -265,8 +257,6 @@ span.on{
 /* 图片展示区 */
 .g-pictures{
   position: relative;
-/*   width:1615px ;
-  margin: 0 auto; */
   overflow: hidden;
   height: 300px;
 }
@@ -471,7 +461,6 @@ span.on{
 .m-pager .nxt{
     background:#9dd8b1 url(../images/b.png) no-repeat center;
 }
-/* 上一页不可点击 */
 .m-pager .f-dis {
     cursor: default;
     background-color: #ddd;
@@ -499,7 +488,6 @@ span.on{
   width: 223px;
   margin-left: -223px;
 }
-/* 机构介绍 */
 .g-sd2 .m-advertise{
   width: 223px;
   height: 229px;
@@ -548,7 +536,6 @@ span.on{
   position: absolute;
   width: 223px;
   top: -1800px;
-  /* bottom: -900px; */
 }
 .m-toplit .item{
   padding: 20px;
@@ -751,7 +738,7 @@ span.on{
    .m-notice .notice_content,.g-header .m-header,.g-header .m-products,.g-flow{
         width: 960px;
     }
-    .g-header .u-product,.u-product .tt,.u-product .pra{
+    .g-header .u-product{
         width: 214px;
     }
     .g-header .product1,.g-header .product2{
