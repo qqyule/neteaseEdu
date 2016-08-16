@@ -141,8 +141,7 @@ var banner_moudels = (function () {
 		now_index = 0,//当前第几张图在显示
 		next = document.querySelector('.m-banner .arrow-right'),//下一张
 		prev = document.querySelector('.m-banner .arrow-left');//上一张
-	next.onclick = function () {
-		clearInterval(totaltimer);
+	next.onclick = function nextc() {
 		now_index++;
 		if(now_index>=img_count){
 			now_index = 0;
@@ -150,7 +149,6 @@ var banner_moudels = (function () {
 		startMove(now_index);
 	}
 	prev.onclick = function () {
-		clearInterval(totaltimer);
 		now_index--;
 		if(now_index<=-1){
 			now_index = img_count-1;
