@@ -141,14 +141,15 @@ var banner_moudels = (function () {
 		now_index = 0,//当前第几张图在显示
 		next = document.querySelector('.m-banner .arrow-right'),//下一张
 		prev = document.querySelector('.m-banner .arrow-left');//上一张
-	next.onclick = function nextc() {
+	next.onclick = nextc;
+	function nextc() {
 		now_index++;
 		if(now_index>=img_count){
 			now_index = 0;
 		}
 		startMove(now_index);
 	}
-	prev.onclick = function () {
+	prev.onclick = function() {
 		now_index--;
 		if(now_index<=-1){
 			now_index = img_count-1;
@@ -178,17 +179,12 @@ var banner_moudels = (function () {
 			}
 		}
 	}
-	function play() {
-		totaltimer = setInterval(function () {
-			next.onclick();
-		},5000)
-	}
-	
-	banner.onmouseover=function () {
+	banner.onmouseover = function () {
 		clearInterval(totaltimer);
 	}
-	banner.onmouseout = play;
-	play();
+	banner.onmouseout = function () {
+		totaltimer = setInterval(nextc,5000);
+	}
 })();
 /**
  * 生活区无限滚动模块

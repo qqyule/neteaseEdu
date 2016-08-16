@@ -160,7 +160,7 @@ function move(obj,json,fn) {
                 fn();
             }
         }
-    },10)
+    },15)
 }
 /**
 * 判断是否有某个className
