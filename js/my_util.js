@@ -14,8 +14,8 @@ function getStyle(obj, attr) {
     }
 }
 /**
- * [获取cookie]
- * @return {[Object]} [返回一个cookie的对象，以cookie[name]的形式访问]
+ * 获取cookie
+ * @return {[Object]} 返回一个cookie的对象，以cookie[name]的形式访问
  */
 function getCookie() {
     var cookie = {};
@@ -84,7 +84,6 @@ function ajax_get(url,options,callback){
     }
     if (!!options) {
         var url = url + '?' + serialize(options);
-        // console.log(url);
     };
     xhr.open("get",url,true);
     xhr.send(null);
@@ -96,18 +95,10 @@ function ajax_get(url,options,callback){
                 str += key + '=' + data[key] + '&';
             }
             data = str.replace(/&$/, '');
-            // console.log(data);
         }
         return data ;
     }
 }
-/**
- *运动框架实现功能：
- *1.任意属性值的改变如width,heigt,opacity...
- *2.多个物体(元素)运动：如ul的所有li依次滑过都改变
- *3.多个属性值同时运动：如width,height同时改变
- *3.链式运动：如先改变width再改变height
- */
 
 /**
  * 运动框架实现功能：
@@ -120,30 +111,22 @@ function ajax_get(url,options,callback){
  * @param  {Function} fn   fn是回调函数,如果需要链式运动需传入如move(this,{width:400},move(this,{heigth,400}))
  */
 function move(obj,json,fn) {
-    //1.首先关闭定时器
-    clearInterval(obj.timer);//每个对象的timer定时器需在调用前定义为null
-    //2.为每一个对象开启定时器
+    clearInterval(obj.timer);
     obj.timer=setInterval(function () {
-        //在遍历每个属性前需要定义一个flag只有当每一个属性的值达到目标值才能清除定时器
         var flag = true ;
-        for(var attr in json){//变量attr代表json里的每一个属性值
-            //确认当前属性的值attr_value
+        for(var attr in json){
             var attr_value = 0;
             if(attr=='opacity'){
-                attr_value = Math.round((parseFloat(getStyle(obj,attr)))*100);//返回的是小数点形式传入的是*100的整形值
+                attr_value = Math.round((parseFloat(getStyle(obj,attr)))*100);
             }
             else{
                 attr_value = parseInt(getStyle(obj,attr));
             }
-     //只有当前属性值attr_value不等于目标值json[attr]时才改变属性值，并将flag变为false保证所有的属性都能达到目标值
             if(attr_value!=json[attr]){
                 flag = false;
-                //确定属性改变运动的速度speed
                 var speed = (json[attr]-attr_value)/100;
                 speed = (speed>0)?Math.ceil(speed):Math.floor(speed);
-                //变化属性值公式
                 attr_value = attr_value+speed;
-                //将变化过后的属性值赋给属性
                 if(attr=='opacity'){
                     obj.style.opacity = attr_value/100;
                     obj.style.filter = "alpha(opacity:"+attr_value+")";
@@ -155,7 +138,6 @@ function move(obj,json,fn) {
         }
         if(flag){
             clearInterval(obj.timer);
-            //在所有属性达到目标值后，如果有回调函数fn则执行，形成链式运动
             if(fn){
                 fn();
             }
@@ -183,7 +165,6 @@ function hasClass(element, className) {
 }
 /**
 * 删除元素className
-*
 * @param {HTMLElement} element 元素
 * @param {string} className className
 */

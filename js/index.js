@@ -179,6 +179,7 @@ var banner_moudels = (function () {
 			}
 		}
 	}
+	totaltimer = setInterval(nextc,5000);
 	banner.onmouseover = function () {
 		clearInterval(totaltimer);
 	}
