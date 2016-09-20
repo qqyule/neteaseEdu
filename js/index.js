@@ -138,10 +138,7 @@ var banner_moudels = (function () {
 		img_count = imgNodes.length,//图片个数
 		buttons = banner.getElementsByTagName('span'),//按钮
 		totaltimer,//计时器
-		now_index = 0,//当前第几张图在显示
-		next = document.querySelector('.m-banner .arrow-right'),//下一张
-		prev = document.querySelector('.m-banner .arrow-left');//上一张
-	next.onclick = nextc;
+		now_index = 0;//当前第几张图在显示
 	function nextc() {
 		now_index++;
 		if(now_index>=img_count){
@@ -149,19 +146,12 @@ var banner_moudels = (function () {
 		}
 		startMove(now_index);
 	}
-	prev.onclick = function() {
-		now_index--;
-		if(now_index<=-1){
-			now_index = img_count-1;
-		}
-		startMove(now_index);
-	}
-	//所有图淡出 当前index图淡入
+	//当前index图淡入
 	function startMove(index) {
 		for(var i=0;i<img_count;i++){
 			buttons[i].className="";
-			move(imgNodes[i],{opacity:0});
 			imgNodes[i].style.display="none";
+			imgNodes[i].style.opacity=0;
 		}
 		imgNodes[index].style.display="block";
 		buttons[index].className="on";
@@ -169,13 +159,14 @@ var banner_moudels = (function () {
 		now_index = index;
 	}
 	// 按钮点击事件
-	for(var i=0;i<buttons.length;i++){
+	for(var i=0,len=buttons.length;i<len;i++){
+		buttons[i].index=i;
 		buttons[i].onclick=function () {
-			if(now_index==this.getAttribute("data-index")){
+			if(now_index==this.index){
 				return ;
 			}
 			else{
-				startMove(this.getAttribute("data-index"));
+				startMove(this.index);
 			}
 		}
 	}

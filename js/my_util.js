@@ -124,7 +124,7 @@ function move(obj,json,fn) {
             }
             if(attr_value!=json[attr]){
                 flag = false;
-                var speed = (json[attr]-attr_value)/100;
+                var speed = (json[attr]-attr_value)/20;
                 speed = (speed>0)?Math.ceil(speed):Math.floor(speed);
                 attr_value = attr_value+speed;
                 if(attr=='opacity'){
@@ -142,7 +142,7 @@ function move(obj,json,fn) {
                 fn();
             }
         }
-    },15)
+    },20)
 }
 /**
 * 判断是否有某个className
