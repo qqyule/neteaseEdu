@@ -267,7 +267,7 @@ var pictures = (function () {
  	//根据当前页码和总页数来绘制翻页器
  	function page(tl,pi) {
 		var pi = pi,
-			tl = tl;
+			tl = tl,
 		    count = pi-lightNum ,//用于判断第几个亮
 		min = count+1,//最低也要大于等于1
 		max = count+pageNum;//最高不能超过总页数
