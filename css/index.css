@@ -713,7 +713,7 @@ span.on{
 }
 @media screen and (max-width: 1205px){
    .m-notice .notice_content,.g-header .m-header,.g-header .m-products,.g-flow{
-        min-width: 960px;
+        width: 960px;
     }
     .g-header .u-product{
         width: 214px;
