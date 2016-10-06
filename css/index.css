@@ -28,7 +28,6 @@ body{
     position: relative;
 }
 .m-notice{
-    display: none;
     height: 36px;
     background: #f3f3f3;
     transition: margin-top 0.3s;
@@ -81,7 +80,6 @@ body{
 }
 .g-fol .follow{
    float: left;
-   display: block;
    width: 54px;
    height: 21px;
    font: 400 12px SimSun;
@@ -291,9 +289,6 @@ span.on{
   width: 225px;
   height: 228px;
   background: #fff;
-}
-.f-templete{
-  display: none;
 }
 .u-cover .wrap{
   display: block;
@@ -512,7 +507,6 @@ span.on{
 .g-toptit .m-toplit{
   position: absolute;
   width: 223px;
-  top: -1800px;
 }
 .m-toplit .item{
   padding: 20px;
@@ -537,11 +531,12 @@ span.on{
 }
 /* 视频 */
 .m-video{
-  display: none;
   width: 100%;
   position: fixed;
   top: 0;
   bottom: 0;
+  left: 0;
+  right: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 9999;
 }
@@ -638,7 +633,6 @@ span.on{
   right: 0;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 9999;
-  display: none;
 }
 .m-login .login{
   z-index: 9999;
@@ -705,7 +699,6 @@ span.on{
     margin: -8px 0 0 8px;
     color: #fa0000;
     font-size: 12px;
-    display: none;
 }
 /* 自适应 */
 .g-header,.g-pictures,.g-footer{

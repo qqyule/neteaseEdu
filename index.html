@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- 通知栏 -->
-    <div class="m-notice">
+    <div class="m-notice" style="display:none;">
         <div class="notice_content">
             <p class="text">网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势！</p>
             <a href="http://study.163.com/smartSpec/intro.htm#/smartSpecIntro" class="see"> 立即查看&gt;</a>
@@ -22,7 +22,7 @@
                 <div class="logo">网易教育产品部</div>
             </div>
             <div class="g-fol">
-                <span  class="follow" > <img src="images/addfollow.png" class="sym">关注</span>
+                <span  class="follow" style="display: block;"> <img src="images/addfollow.png" class="sym">关注</span>
                 <div class="followed" style="display: none">
                     <img src="images/followed.png" alt="" class="sym">
                     <span class="text">已关注</span>
@@ -69,11 +69,11 @@
     <!-- 工作环境轮播图展示 -->
     <div class="g-pictures ">
         <ul class="m-pictures clearfix">
-            <li class="pic_list"><img src="images/act1.png"></li>
-            <li class="pic_list"><img src="images/act2.png"></li>
-            <li class="pic_list"><img src="images/act3.png"></li>
-            <li class="pic_list"><img src="images/act4.png"></li>
-            <li class="pic_list"><img src="images/act5.png"></li>
+            <li class="pic_list"><img src="images/act1.png" width="320" height="220"></li>
+            <li class="pic_list"><img src="images/act2.png" width="320" height="220"></li>
+            <li class="pic_list"><img src="images/act3.png" width="320" height="220"></li>
+            <li class="pic_list"><img src="images/act4.png" width="320" height="220"></li>
+            <li class="pic_list"><img src="images/act5.png" width="320" height="220"></li>
         </ul>
     </div>
     <!-- 主内容区 -->
@@ -87,23 +87,19 @@
                     </div>
                     <div class="m-basepool">
                         <div class="m-data-lists clearfix"> 
-                            <div class="u-cover f-templete">
-                                <a class="wrap clearfix">
-                                    <img class="imgpic" width="223" height="124">
-                                    <h3 class="tt f-oh f-fs0"></h3>
-                                    <div class="orgname f-oh f-fs0"></div>
-                                    <div class="num">
-                                        <span class="hot"></span>
-                                    </div>
-                                    <div class="price">
-                                        <span class="pri f-fs0"></span>
-                                    </div>
-                                    <div class="kind">分类：<span class="kindname"></span></div>
-                                    <div class="disc"></div>
-                                </a>
-                            </div>
                         </div>
-                        <div class="m-pager"></div>
+                        <div class="m-pager">
+                            <a data-index="0" class="prv f-dis">上一页</a>
+                            <a data-index="1" class="pg selected">1</a>
+                            <a data-index="2" class="pg">2</a>
+                            <a data-index="3" class="pg">3</a>
+                            <a data-index="4" class="pg">4</a>
+                            <a data-index="5" class="pg">5</a>
+                            <a data-index="6" class="pg">6</a>
+                            <a data-index="7" class="pg">7</a>
+                            <a data-index="8" class="pg">8</a>
+                            <a data-index="2" class="nxt">下一页</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -120,14 +116,7 @@
                 <div class="m-top">
                     <h2 class="u-tit">最热排行</h2>
                     <div class="g-toptit">
-                        <ul class="m-toplit">
-                            <li class="item f-templete">
-                                <a class="clearfix">
-                                    <img class="imgpic" width="50" height="50">
-                                    <h3 class="tt f-oh"></h3>
-                                    <div class="num"></div>
-                                </a>
-                            </li>
+                        <ul class="m-toplit" style="top: -1800px;">
                         </ul>
                     </div>
                 </div>
@@ -157,31 +146,6 @@
                 <h4 class="tit">更多：</h4>
                 <a href="#" class="link">常见问题</a>
                 <a href="#" class="link">意见反馈</a>
-            </div>
-        </div>
-    </div>
-    <!-- 登录框 -->
-    <div class="m-login">
-        <div class="login">
-            <div class="close">关闭</div>
-            <h2>登录云课堂</h2>
-            <form id="login-form">
-                <input type="text" placeholder="账号" name="userName" class="user" required maxlength="11">
-                <input type="password" name="password" placeholder="密码" class="pass">
-                <p class="login-error">用户名或密码错误，请重新输入！</p>
-                <div class="login-btn">登 录</div>
-            </form>
-        </div>
-    </div>
-    <!-- 视频悬浮层 -->
-    <div class="m-video">
-        <div class="v-content">
-            <h2>请观看下面的视频</h2>
-            <div class="close">关闭</div>
-            <div class="v-wrap">
-                <video controls loop id="movie">
-                    <source src="http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4"> 你的浏览器不支持该视频播放.请升级你的浏览器
-                </video>
             </div>
         </div>
     </div>
